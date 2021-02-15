@@ -27,6 +27,7 @@ const onSignIn = function (event) {
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signUpFailure)
+
 }
 
 const onChangePassword = function (event) {
