@@ -20,10 +20,10 @@ const onSignUp = function (event) {
 const onSignIn = function (event) {
 
   event.preventDefault()
-  const form = event.target
 
+  const form = event.target
   const data = getFormFields(form)
-  console.log('This is the data in sign-in', data)
+
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signUpFailure)

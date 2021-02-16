@@ -3,8 +3,9 @@ const store = require('./../store')
 
 const signUpSuccess = function(response) {
 
-  alert('Thank you for signing up')
+  $('#message').text('Thank you for signing up')
   $('#sign-up').trigger('reset')
+  console.log(response) 
 }
 const signUpFailure = function(response) {
   $('#error-message').text('Sign up failed, try again')

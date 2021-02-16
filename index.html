@@ -4,23 +4,13 @@
   <head>
     <title>Tic Tac Toe</title>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Do not add `link` tags-->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <!-- Do not add `script` tags-->
+    <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+    <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
   <body>
-
-  <div class="container">
-    <h1 id="playText">Let's Play</h1>
-    <button id="newgame">New Game</button>
-    <div id="gameboard">
-      <div class"box" id="0"></div>
-      <div class"box" id="1"></div>
-      <div class"box" id="2"></div>
-      <div class"box" id="3"></div>
-      <div class"box" id="4"></div>
-      <div class"box" id="5"></div>
-      <div class"box" id="6"></div>
-      <div class"box" id="7"></div>
-      <div class"box" id="8"></div>
-    </div>
-  </div>
 
       <h1>Tic Tac Toe</h1>
       <main>
@@ -50,8 +40,54 @@
           <form id='sign-out'>
             <button>Sign Out</button>
           </form>
+        </section >
 
+
+        <section class="newgame">
+          <h1 id="playText">Let's Play</h1>
+          <button id="newgame">New Game</button>
+          <section id="game-board">
+              <div class="container" id="gameboard">
+
+                <div id="row1" class="row">
+                  <div id=0 class"horizontal col-4" >box0 </div>
+                  <div id=1 class"vertical col-4" >box1 </div>
+                  <div id=2 class"horizontal col-4" >box2 </div>
+                </div>
+                <div id="row2" class="row">
+                  <div id=3 class"horizontal col-4" >box3 </div>
+                  <div id=4 class"vertical col-4" >box4 </div>
+                  <div id=5 class"horizontal col-4" >box5 </div>
+                </div>
+                <div id="row3" class="row">
+                  <div id=6 class"col-4" >box6 </div>
+                  <div id=7 class"vertical col-4" >box7 </div>
+                  <div id=8 class"col-4" >box8 </div>
+                </div>
+            </div>
           </section>
+
+
+          <!-- <table>
+            <tr>
+              <td class="horizontal"></td>
+              <td class="vertical"></td>
+              <td class="horizontal"></td>
+            </tr>
+
+            <tr>
+              <td class="horizontal"></td>
+              <td class="vertical"></td>
+              <td class="horizontal"></td>
+            </tr>
+
+            <tr>
+              <td></td>
+              <td class="vertical"></td>
+              <td></td>
+            </tr>
+
+          </table> -->
 
 
       </main>
