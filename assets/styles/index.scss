@@ -4,36 +4,27 @@ h1 {
   font-size: 60px;
   font-family: cursive;
   color: blue;
-  text-align: center
+  text-align: center;
 }
 
-div {
+.box {
   align-items: center;
-  border-bottom: 1px;
-  border-top: 0px;
-  border-left: 0px;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
   border-right: 1px solid black;
   border-style: solid;
-  height: 50px;
-  width: 100px;
+  height: 100px;
+  width: 50px;
   justify-content: center;
   color: black;
   padding: 0px;
   margin: 0px;
   display: flex;
-  flex-wrap: wrap;
+  border-style: outset;
+
 }
 
-// td {
-//   width: 100px;
-//   height: 100px;
-// }
-// //
-// .vertical {
-//   border-left: 0px solid black;
-//   border-right: 7px solid black;
-// }
-//
-// .horizontal {
-//   border-bottom: 1px solid black;
-// }
+.button {
+  align-items: center;
+}
