@@ -69,25 +69,14 @@ const onGameBoardClick = function (event) {
   const selectedDivIndex = $(this).data("cellIndex")
   console.log(selectedDivIndex)
 
-// $(this).text(currentPlayer)
+$(this).text(store.currentPlayer)
 
   api.playerMove(selectedDivIndex)
     .then(ui.playerMoveSuccess)
     .catch(ui.playerMoveFailure)
+}
 
-    }
 
-    let currentPlayer = 'X'
-    const playerMove = function (event) {
-    playerDisplay = currentPlayer
-
-    if(currentPlayer === 'X') {
-      currentPlayer = 'O'
-    } else {
-      currentPlayer = 'X'
-      console.log(currentPlayer)
-    }
-  }  
 
 
 

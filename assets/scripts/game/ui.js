@@ -1,6 +1,16 @@
 
 const store = require('./../store')
 
+const switchPlayer = function () {
+
+  if(store.currentPlayer === 'X') {
+    store.currentPlayer = 'O'
+  } else {
+    store.currentPlayer = 'X'
+    // console.log(currentPlayer)
+  }
+}
+
 const signUpSuccess = function(response) {
 
   alert('Thank you for signing up, Your ready to play!')
@@ -76,6 +86,7 @@ const playerMoveSuccess = function (response) {
     $(this).html(`<p>${store.game.cells[index]}</p>`)
   })
   console.log('this is the response to playerMove', response)
+  switchPlayer()
 }
 
 const playerMoveFailure = function () {
