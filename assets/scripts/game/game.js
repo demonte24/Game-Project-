@@ -3,7 +3,7 @@ export default class Game {
 
 const() {
   this.turn = "X"
-  this.bored = new array(9).fill(null)
+  this.gameBoard = new array(9).fill(null)
 }
 
 nextTurn() {
@@ -11,11 +11,11 @@ nextTurn() {
 }
 
 makeMove(i) {
-  if (this.bored[i]) {
+  if (this.gameBoard[i]) {
     return
   }
 
-  this.bored[i] = this.turn
+  this.gameBoard[i] = this.turn
   this.nextTurn()
   }
 }

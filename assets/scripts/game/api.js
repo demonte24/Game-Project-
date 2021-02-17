@@ -39,9 +39,41 @@ const signOut = function () {
   })
 }
 
+const newGame = function () {
+  return $.ajax({
+  method: 'POST',
+  url: config.apiUrl + '/games',
+  data: {},
+  headers: {
+    Authorization: 'Bearer ' + store.user.token
+    }
+  })
+}
+
+const playerMove = function (cellIndex) {
+  return $.ajax({
+  method: 'PATCH',
+  url: config.apiUrl + '/games/' + store.game._id,
+  headers: {
+    Authorization: 'Bearer ' + store.user.token
+  },
+  data: {
+    "game": {
+      "cell": {
+        "index": cellIndex,
+        "value": store.currentPlayer,
+      },
+      "over": false
+  }
+}
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
-  signOut
+  signOut,
+  newGame,
+  playerMove
 }

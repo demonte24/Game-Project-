@@ -1,7 +1,7 @@
 
 const api = require('./api')
 const ui = require('./ui')
-
+const store = require('../store')
 
 const getFormFields = require('../../../lib/get-form-fields')
 
@@ -52,29 +52,50 @@ const onSignOut = function (event) {
     .catch(ui.signOutFailure)
 }
 
-const onGameBoard = function (event) {
-  event.preventDefault()
-
-  const form = event.target
-  const data = getFormFields(form)
-}
-
 const onNewGame = function (event) {
   event.preventDefault()
 
-  const form = event.target
-  const data = getFormFields(form)
-
   api.newGame()
-    .then(ui.newGametSuccess)
+    .then(ui.newGameSuccess)
     .catch(ui.newGameFailure)
 }
+
+const onGameBoardClick = function (event) {
+  // event.preventDefault()
+  //when a user click a space x should appear.
+  //when a user click another space o should appear.
+  // store.currentPlayer = 'X'
+  const newGame = store.game
+  const selectedDivIndex = $(this).data("cellIndex")
+  console.log(selectedDivIndex)
+
+// $(this).text(currentPlayer)
+
+  api.playerMove(selectedDivIndex)
+    .then(ui.playerMoveSuccess)
+    .catch(ui.playerMoveFailure)
+
+    }
+
+    let currentPlayer = 'X'
+    const playerMove = function (event) {
+    playerDisplay = currentPlayer
+
+    if(currentPlayer === 'X') {
+      currentPlayer = 'O'
+    } else {
+      currentPlayer = 'X'
+      console.log(currentPlayer)
+    }
+  }  
+
+
 
 module.exports = {
   onSignUp,
   onSignIn,
   onChangePassword,
   onSignOut,
-  onGameBoard,
-  onNewGame
+  onNewGame,
+  onGameBoardClick
 }

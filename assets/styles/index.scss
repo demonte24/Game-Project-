@@ -3,8 +3,26 @@
 h1 {
   font-size: 60px;
   font-family: cursive;
-  color: blue;
+  color: darkblue;
   text-align: center;
+    background-color: grey;
+}
+
+body{
+  background-color: grey;
+}
+
+
+.button  {
+  font-family: cursive;
+}
+
+.container{
+
+}
+
+.auth-section {
+font-family: cursive;
 }
 
 .box {
@@ -20,7 +38,7 @@ h1 {
   color: black;
   padding: 0px;
   margin: 0px;
-  display: flex;
+  // display: flex;
   border-style: outset;
 
 }

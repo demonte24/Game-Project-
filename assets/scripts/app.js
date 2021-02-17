@@ -17,5 +17,6 @@ $(() => {
   $('#change-password').on('submit', gameEvents.onChangePassword)
   $('#sign-out').on('click', gameEvents.onSignOut)
   $('#new-game').on('click', gameEvents.onNewGame)
-  $('#game-bored').on('click', gameEvents.onGameBoard)
+  // $('#game-board-click').on('click', gameEvents.onGameBoardClick)
+  $('.box').on('click', gameEvents.onGameBoardClick)
 })

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
+
     <title>Tic Tac Toe</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +14,7 @@
 
       <h1>Tic Tac Toe</h1>
       <main>
-        <section id="auth-section">
+        <section class="auth-section">
           <form id='sign-up'>
             <input type='email' name='credentials[email]' placeholder='Enter Email Here' required>
             <input type='password' name='credentials[password]' placeholder='Enter Password Here' required>
@@ -42,37 +42,40 @@
           </form>
         </section >
 
-    <section id=game-play>
-      <form id='game-board'>
-          <h1 id="playText">Let's Play</h1>
+    <section id=game-board-section>
+      <h1 id="playText">Let's Play</h1>
 
-
-          <div class="container">
+      <div id='game-board' class="container">
         <div class="row">
-              <div class="col-4 col-lg-3 box alt-color"></div>
-              <div class="col-4 col-lg-3 box alt-color"></div>
-              <div class="col-4 col-lg-3 box alt-color"></div>
+              <div class="col-4 col-lg-3 box alt-color" data-cell-index="0"></div>
+              <div class="col-4 col-lg-3 box alt-color" data-cell-index="1"></div>
+              <div class="col-4 col-lg-3 box alt-color" data-cell-index="2"></div>
         </div>
 
           <div class="row">
-              <div class="col-4 col-lg-3 box alt-color"></div>
-              <div class="col-4 col-lg-3 box alt-color"></div>
-              <div class="col-4 col-lg-3 box alt-color"></div>
+              <div class="col-4 col-lg-3 box alt-color" data-cell-index="3"></div>
+              <div class="col-4 col-lg-3 box alt-color" data-cell-index="4"></div>
+              <div class="col-4 col-lg-3 box alt-color" data-cell-index="5"></div>
           </div>
 
           <div class="row">
-              <div class="col-4 col-lg-3 box alt-color"></div>
-              <div class="col-4 col-lg-3 box alt-color"></div>
-              <div class="col-4 col-lg-3 box alt-color"></div>
+              <div class="col-4 col-lg-3 box alt-color" data-cell-index="6"></div>
+              <div class="col-4 col-lg-3 box alt-color" data-cell-index="7"></div>
+              <div class="col-4 col-lg-3 box alt-color" data-cell-index="8"></div>
 
           </div>
         </div>
-      </form>
 
-      <form class="button">
-        <button id="new-game">New Game</button>
-      </form>
     </section>
+
+    <form class="button">
+      <button id="new-game">New Game</button>
+    </form>
+
+<!-- <h3 class="currentPlayer">X</h3>
+<h3 class="CurrentPlayer">O</h3> -->
+
+
 
       </main>
     </body>
