@@ -8,6 +8,7 @@ $('#change-password').hide()
 $('#sign-out').hide()
 $('#game-board').hide()
 $('#new-game').hide()
+$('#playText').hide()
 // use require without a reference to ensure a file is bundled
 // require('./example')
 

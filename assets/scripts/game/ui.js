@@ -18,7 +18,7 @@ const signUpSuccess = function(response) {
   console.log(response)
 }
 const signUpFailure = function(response) {
-  alert('Sign up failed, try again')
+  $('message').text('Sign up failed, try again')
 }
 
 const signInSuccess = function(response) {
@@ -34,7 +34,7 @@ const signInSuccess = function(response) {
 }
 
 const signInFailure = function(response) {
-  alert('Sign In failed, try again')
+  $('message').text('Sign In failed, try again')
 }
 
 const changePasswordSuccess = function(response) {
@@ -44,7 +44,7 @@ const changePasswordSuccess = function(response) {
 }
 
 const changePasswordFailure = function(response) {
-  alert('Change Password failed, try again')
+  $('message').text('Change Password failed, try again')
 }
 
 const signOutSuccess = function(response) {
@@ -57,25 +57,28 @@ const signOutSuccess = function(response) {
   $('#sign-out').hide()
   $('#game-board').hide()
   $('#new-game').hide()
+  $('#playText').hide()
 }
 
 const signOutFailure = function(response) {
-  alert('Sign Out failed, try again')
+  $('message').text('Sign Out failed, try again')
 }
 
 const newGameSuccess = function (response) {
-  alert('New game has started!')
+  $('message').text('New game has started!')
   store.game = response.game
   store.currentPlayer = 'X'
   $('#game-board').show()
+  $('#playText').show()
+  $('#new-game').trigger('reset')
 }
 
 const newGameFailure = function (response) {
-  alert('New game failed TRY AGAIN!')
+  $('message').text('New game failed TRY AGAIN!')
 }
 
 const playerMoveSuccess = function (response) {
-  alert('You successfully made a move')
+  $('message').text('You successfully made a move')
   store.game = response.game
   // $('#playerMove').text('X')
   const gameBoardBoxes = $('.row').children()
@@ -90,7 +93,7 @@ const playerMoveSuccess = function (response) {
 }
 
 const playerMoveFailure = function () {
-  alert('Your move failed TRY AGAIN!')
+  $('message').text('Your move failed TRY AGAIN!')
 }
 
 
