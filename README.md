@@ -33,4 +33,4 @@ will be to figure out the problems and get unstuck, I also vowed to myself to no
 
 
 ### Images 
-! [alt text] (http://url/to/09682FDE-BADE-4D9C-8354-76A03ED3D291_1_105_c.jpeg
+! [alt text] (http://url/to/https://imgur.com/D3AT1pk
