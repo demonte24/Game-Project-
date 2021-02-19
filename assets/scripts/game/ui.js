@@ -7,7 +7,7 @@ const switchPlayer = function () {
     store.currentPlayer = 'O'
   } else {
     store.currentPlayer = 'X'
-    // console.log(currentPlayer)
+
   }
 }
 
@@ -39,7 +39,7 @@ const signInFailure = function(response) {
 
 const changePasswordSuccess = function(response) {
 
-  alert('Your password has been successfully changed!')
+  $('#message').text('Your password has been successfully changed!')
   $('#change-password').trigger('reset')
 }
 
@@ -67,10 +67,12 @@ const signOutFailure = function(response) {
 const newGameSuccess = function (response) {
   $('#message').text('New game has started!')
   store.game = response.game
+  console.log(store.game)
   store.currentPlayer = 'X'
   $('#game-board').show()
   $('#playText').show()
-  $('#new-game').trigger('reset')
+  $('.box').text('')
+
 }
 
 const newGameFailure = function (response) {
@@ -80,15 +82,18 @@ const newGameFailure = function (response) {
 const playerMoveSuccess = function (response) {
   $('#message').text('You successfully made a move')
   store.game = response.game
+  console.log(store.game)
   $('#playerMove').text('X')
+
   const gameBoardBoxes = $('.row').children()
-  
+
   gameBoardBoxes.each(index => {
 
     $(this).html(`<p>${store.game.cells[index]}</p>`)
   })
 
   switchPlayer()
+
 }
 
 const playerMoveFailure = function () {

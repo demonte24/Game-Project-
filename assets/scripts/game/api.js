@@ -69,6 +69,21 @@ const playerMove = function (cellIndex) {
   })
 }
 
+// const show = function (id) {
+//   return  $.ajax({
+//     method: 'GET',
+//     url: config.apiUrl + '/games/' + id
+//   })
+// }
+//
+// const createBook = function (formData) {
+//   return $.ajax({
+//     method: 'POST',
+//     url: config.apiUrl + '/games/',
+//     data: {}
+//   })
+// }
+
 module.exports = {
   signUp,
   signIn,
