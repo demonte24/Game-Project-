@@ -13,17 +13,17 @@ const switchPlayer = function () {
 
 const signUpSuccess = function(response) {
 
-  alert('Thank you for signing up, Your ready to play!')
+$('#message').text('Thank you for signing up, Your ready to play!')
   $('#sign-up').trigger('reset')
-  console.log(response)
+  // console.log(response)
 }
 const signUpFailure = function(response) {
-  $('message').text('Sign up failed, try again')
+  $('#message').text('Sign up failed, try again')
 }
 
 const signInSuccess = function(response) {
   store.user = response.user
-  alert('Thank you for signing In, LETS PLAY!')
+$('#message').text('Thank you for signing In, LETS PLAY!')
   $('#sign-In').trigger('reset')
   $('#change-password').show()
   $('#sign-out').show()
@@ -34,7 +34,7 @@ const signInSuccess = function(response) {
 }
 
 const signInFailure = function(response) {
-  $('message').text('Sign In failed, try again')
+  $('#message').text('Sign In failed, try again')
 }
 
 const changePasswordSuccess = function(response) {
@@ -44,12 +44,12 @@ const changePasswordSuccess = function(response) {
 }
 
 const changePasswordFailure = function(response) {
-  $('message').text('Change Password failed, try again')
+  $('#message').text('Change Password failed, try again')
 }
 
 const signOutSuccess = function(response) {
 
-  alert('Thank you for playing')
+$('#message').text('Thank you for playing')
   $('#sign-out').trigger('reset')
   $('#sign-in').show()
   $('#sign-up').show()
@@ -61,11 +61,11 @@ const signOutSuccess = function(response) {
 }
 
 const signOutFailure = function(response) {
-  $('message').text('Sign Out failed, try again')
+  $('#message').text('Sign Out failed, try again')
 }
 
 const newGameSuccess = function (response) {
-  $('message').text('New game has started!')
+  $('#message').text('New game has started!')
   store.game = response.game
   store.currentPlayer = 'X'
   $('#game-board').show()
@@ -74,26 +74,25 @@ const newGameSuccess = function (response) {
 }
 
 const newGameFailure = function (response) {
-  $('message').text('New game failed TRY AGAIN!')
+  $('#message').text('New game failed TRY AGAIN!')
 }
 
 const playerMoveSuccess = function (response) {
-  $('message').text('You successfully made a move')
+  $('#message').text('You successfully made a move')
   store.game = response.game
-  // $('#playerMove').text('X')
+  $('#playerMove').text('X')
   const gameBoardBoxes = $('.row').children()
-  console.log('this is the game board', gameBoardBoxes)
+  
   gameBoardBoxes.each(index => {
-    console.log("this is a box", index)
-    console.log("this is the corrasonpding game cell", store.game.cells[index])
+
     $(this).html(`<p>${store.game.cells[index]}</p>`)
   })
-  console.log('this is the response to playerMove', response)
+
   switchPlayer()
 }
 
 const playerMoveFailure = function () {
-  $('message').text('Your move failed TRY AGAIN!')
+  $('#message').text('Your move failed TRY AGAIN!')
 }
 
 

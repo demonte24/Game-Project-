@@ -67,7 +67,7 @@ const onGameBoardClick = function (event) {
   // store.currentPlayer = 'X'
   const newGame = store.game
   const selectedDivIndex = $(this).data("cellIndex")
-  console.log(selectedDivIndex)
+  
 
 $(this).text(store.currentPlayer)
 
