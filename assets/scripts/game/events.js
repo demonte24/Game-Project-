@@ -60,6 +60,23 @@ const onNewGame = function (event) {
     .catch(ui.newGameFailure)
 }
 
+// const onGameBoardClick = function (event) {
+//   // event.preventDefault()
+//   //when a user click a space x should appear.
+//   //when a user click another space o should appear.
+//   // store.currentPlayer = 'X'
+//   const newGame = store.game
+//   const selectedDivIndex = $(this).data("cellIndex")
+//
+//
+//
+// $(this).text(store.currentPlayer)
+//
+//   api.playerMove(selectedDivIndex)
+//     .then(ui.playerMoveSuccess)
+//     .catch(ui.playerMoveFailure)
+// }
+
 const onGameBoardClick = function (event) {
   // event.preventDefault()
   //when a user click a space x should appear.
@@ -67,17 +84,16 @@ const onGameBoardClick = function (event) {
   // store.currentPlayer = 'X'
   const newGame = store.game
   const selectedDivIndex = $(this).data("cellIndex")
-
-console.log(store.game.cells)
-console.log(selectedDivIndex)
-$(this).text(store.currentPlayer)
-
+if ($(this).text() !== 'X' && $(this).text() !== 'O') {
+  console.log("in my if in events")
+  $(this).text(store.currentPlayer)
   api.playerMove(selectedDivIndex)
     .then(ui.playerMoveSuccess)
     .catch(ui.playerMoveFailure)
+  } else {
+    ui.playerMoveFailure()
+  }
 }
-
-
 
 
 

@@ -67,7 +67,6 @@ const signOutFailure = function(response) {
 const newGameSuccess = function (response) {
   $('#message').text('New game has started!')
   store.game = response.game
-  console.log(store.game)
   store.currentPlayer = 'X'
   $('#game-board').show()
   $('#playText').show()
@@ -82,17 +81,20 @@ const newGameFailure = function (response) {
 const playerMoveSuccess = function (response) {
   $('#message').text('You successfully made a move')
   store.game = response.game
-  console.log(store.game)
-  $('#playerMove').text('X')
+  $('#playerMove').text(store.currentPlayer)
+   switchPlayer()
 
   const gameBoardBoxes = $('.row').children()
 
   gameBoardBoxes.each(index => {
+    if ($(store.game.cells[index]).text() !== 'X' && $(store.games.cells[index]).text() !== 'O'){
+      console.log(cellsIndex)
+      $(this).html(`<p>${store.game.cells[index]}</p>`)
+    }else{
+      $('#message').text('Your move failed TRY AGAIN!')
+    }
 
-    $(this).html(`<p>${store.game.cells[index]}</p>`)
   })
-
-  switchPlayer()
 
 }
 
