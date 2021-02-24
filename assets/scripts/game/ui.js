@@ -31,6 +31,7 @@ $('#message').text('Thank you for signing In, LETS PLAY!')
   $('#new-game').show()
   $('#sign-up').hide()
   $('#sign-in').hide()
+  $('#games-played').show()
 }
 
 const signInFailure = function(response) {
@@ -58,6 +59,7 @@ $('#message').text('Thank you for playing')
   $('#game-board').hide()
   $('#new-game').hide()
   $('#playText').hide()
+  $('#games-played').hide()
 }
 
 const signOutFailure = function(response) {
@@ -86,15 +88,6 @@ const playerMoveSuccess = function (response) {
 
   const gameBoardBoxes = $('.row').children()
 
-  gameBoardBoxes.each(index => {
-    if ($(store.game.cells[index]).text() !== 'X' && $(store.games.cells[index]).text() !== 'O'){
-      console.log(cellsIndex)
-      $(this).html(`<p>${store.game.cells[index]}</p>`)
-    }else{
-      $('#message').text('Your move failed TRY AGAIN!')
-    }
-
-  })
 
 }
 
@@ -102,6 +95,20 @@ const playerMoveFailure = function () {
   $('#message').text('Your move failed TRY AGAIN!')
 }
 
+
+const gamesPlayedSuccess = function (responseData) {
+  const games = responseData.games
+  let gamesHtml = ''
+  games.forEach(game => {
+    gamesHtml += `
+      <p>ID: ${game.owner}<p>
+      <p>Cells Used: ${game.cells}<p>
+      <p>Game Over: ${game.over}<p>
+      <hr>
+    `
+  })
+  $('.gamesPlayed').html(gamesHtml)
+}
 
 
 
@@ -117,5 +124,7 @@ module.exports = {
   newGameSuccess,
   newGameFailure,
   playerMoveSuccess,
-  playerMoveFailure
+  playerMoveFailure,
+  gamesPlayedSuccess
+
 }

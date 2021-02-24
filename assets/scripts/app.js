@@ -9,6 +9,7 @@ $('#sign-out').hide()
 $('#game-board').hide()
 $('#new-game').hide()
 $('#playText').hide()
+$('#games-played').hide()
 // use require without a reference to ensure a file is bundled
 // require('./example')
 
@@ -18,6 +19,6 @@ $(() => {
   $('#change-password').on('submit', gameEvents.onChangePassword)
   $('#sign-out').on('click', gameEvents.onSignOut)
   $('#new-game').on('click', gameEvents.onNewGame)
-  // $('#game-board-click').on('click', gameEvents.onGameBoardClick)
   $('.box').on('click', gameEvents.onGameBoardClick)
+  $('#games-played').on('click', gameEvents.onGamesPlayed)
 })

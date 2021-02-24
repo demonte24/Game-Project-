@@ -69,20 +69,17 @@ const playerMove = function (cellIndex) {
   })
 }
 
-// const show = function (id) {
-//   return  $.ajax({
-//     method: 'GET',
-//     url: config.apiUrl + '/games/' + id
-//   })
-// }
-//
-// const createBook = function (formData) {
-//   return $.ajax({
-//     method: 'POST',
-//     url: config.apiUrl + '/games/',
-//     data: {}
-//   })
-// }
+const gamesPlayed = function (data) {
+  return $.ajax({
+    method: 'GET',
+    url: config.apiUrl + '/games/',
+    data: {},
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+      }
+  })
+}
+
 
 module.exports = {
   signUp,
@@ -90,5 +87,6 @@ module.exports = {
   changePassword,
   signOut,
   newGame,
-  playerMove
+  playerMove,
+  gamesPlayed
 }

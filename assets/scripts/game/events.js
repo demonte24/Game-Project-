@@ -60,39 +60,26 @@ const onNewGame = function (event) {
     .catch(ui.newGameFailure)
 }
 
-// const onGameBoardClick = function (event) {
-//   // event.preventDefault()
-//   //when a user click a space x should appear.
-//   //when a user click another space o should appear.
-//   // store.currentPlayer = 'X'
-//   const newGame = store.game
-//   const selectedDivIndex = $(this).data("cellIndex")
-//
-//
-//
-// $(this).text(store.currentPlayer)
-//
-//   api.playerMove(selectedDivIndex)
-//     .then(ui.playerMoveSuccess)
-//     .catch(ui.playerMoveFailure)
-// }
-
 const onGameBoardClick = function (event) {
-  // event.preventDefault()
-  //when a user click a space x should appear.
-  //when a user click another space o should appear.
-  // store.currentPlayer = 'X'
+
   const newGame = store.game
   const selectedDivIndex = $(this).data("cellIndex")
-if ($(this).text() !== 'X' && $(this).text() !== 'O') {
-  console.log("in my if in events")
-  $(this).text(store.currentPlayer)
-  api.playerMove(selectedDivIndex)
-    .then(ui.playerMoveSuccess)
-    .catch(ui.playerMoveFailure)
-  } else {
+  if ($(this).text() !== 'X' && $(this).text() !== 'O') {
+    $(this).text(store.currentPlayer)
+      api.playerMove(selectedDivIndex)
+        .then(ui.playerMoveSuccess)
+        .catch(ui.playerMoveFailure)
+} else {
     ui.playerMoveFailure()
   }
+}
+
+const onGamesPlayed = function (events) {
+  event.preventDefault()
+
+  api.gamesPlayed()
+    .then(ui.gamesPlayedSuccess)
+    .catch(ui.gamesPlayedFailure)
 }
 
 
@@ -103,5 +90,6 @@ module.exports = {
   onChangePassword,
   onSignOut,
   onNewGame,
-  onGameBoardClick
+  onGameBoardClick,
+  onGamesPlayed
 }
