@@ -12,11 +12,10 @@ const switchPlayer = function () {
 }
 
 const signUpSuccess = function(response) {
-
-$('#message').text('Thank you for signing up, Your ready to play!')
+  $('#message').text('Thank you for signing up, Your ready to play!')
   $('#sign-up').trigger('reset')
-  // console.log(response)
 }
+
 const signUpFailure = function(response) {
   $('#message').text('Sign up failed, try again')
 }
@@ -24,7 +23,7 @@ const signUpFailure = function(response) {
 const signInSuccess = function(response) {
   store.user = response.user
 $('#message').text('Thank you for signing In, LETS PLAY!')
-  $('#sign-In').trigger('reset')
+  $('#sign-in').trigger('reset')
   $('#change-password').show()
   $('#sign-out').show()
   $('#game-board').hide()
@@ -39,7 +38,6 @@ const signInFailure = function(response) {
 }
 
 const changePasswordSuccess = function(response) {
-
   $('#message').text('Your password has been successfully changed!')
   $('#change-password').trigger('reset')
 }
@@ -50,16 +48,16 @@ const changePasswordFailure = function(response) {
 
 const signOutSuccess = function(response) {
 
-$('#message').text('Thank you for playing')
-  $('#sign-out').trigger('reset')
-  $('#sign-in').show()
-  $('#sign-up').show()
-  $('#change-password').hide()
-  $('#sign-out').hide()
-  $('#game-board').hide()
-  $('#new-game').hide()
-  $('#playText').hide()
-  $('#games-played').hide()
+  $('#message').text('Thank you for playing')
+    $('#sign-out').trigger('reset')
+    $('#sign-in').show()
+    $('#sign-up').show()
+    $('#change-password').hide()
+    $('#sign-out').hide()
+    $('#game-board').hide()
+    $('#new-game').hide()
+    $('#playText').hide()
+    $('#games-played').hide()
 }
 
 const signOutFailure = function(response) {
@@ -73,7 +71,6 @@ const newGameSuccess = function (response) {
   $('#game-board').show()
   $('#playText').show()
   $('.box').text('')
-
 }
 
 const newGameFailure = function (response) {
@@ -88,29 +85,52 @@ const playerMoveSuccess = function (response) {
 
   const gameBoardBoxes = $('.row').children()
 
-
-}
+  }
 
 const playerMoveFailure = function () {
   $('#message').text('Your move failed TRY AGAIN!')
+  }
+
+
+  const gamesPlayedSuccess = function (responseData) {
+    $('#games-played').trigger('reset')
+    const games = responseData.games
+    let gamesHtml = ''
+    games.forEach(game => {
+      gamesHtml += `
+        <p>ID: ${game.owner}<p>
+        <p>Cells Used: ${game.cells}<p>
+        <p>Game Over: ${game.over}<p>
+        <hr>
+      `
+    })
+    $('.gamesPlayed').html(gamesHtml)
+  }
+
+const updateGameSuccess = function (response) {
+  $(response).html('X')
+  store.currentGame = response.game.id
+  $('message').text('Your game has updated!')
+  }
+
+const updateGameFailure = function (response) {
+  $('message').text('Your game did not update try again!')
+  }
+
+  const winnerCheck = function () {
+  store.over = true
+  store.game.over = true
+  store.game.cells = store.cells
+  console.log(store.game.cells)
+  console.log(store.game)
+  $('#message').html('Player ' + store.startPlayer + ' has won!')
+  // $('.container').css('pointer-events', 'none')
 }
-
-
-const gamesPlayedSuccess = function (responseData) {
-  const games = responseData.games
-  let gamesHtml = ''
-  games.forEach(game => {
-    gamesHtml += `
-      <p>ID: ${game.owner}<p>
-      <p>Cells Used: ${game.cells}<p>
-      <p>Game Over: ${game.over}<p>
-      <hr>
-    `
-  })
-  $('.gamesPlayed').html(gamesHtml)
+const tieCheck = function () {
+  store.game.over = true
+  $('#message').text('Looks like a tie game!  Click new game to reset.')
+  // $('.container').css('pointer-events', 'none')
 }
-
-
 
 module.exports = {
   signUpSuccess,
@@ -125,6 +145,9 @@ module.exports = {
   newGameFailure,
   playerMoveSuccess,
   playerMoveFailure,
-  gamesPlayedSuccess
-
-}
+  gamesPlayedSuccess,
+  updateGameSuccess,
+  updateGameFailure,
+  winnerCheck,
+  tieCheck
+  }

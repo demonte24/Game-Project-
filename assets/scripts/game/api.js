@@ -69,16 +69,18 @@ const playerMove = function (cellIndex) {
   })
 }
 
-const gamesPlayed = function (data) {
+const gamesPlayed = function () {
   return $.ajax({
     method: 'GET',
-    url: config.apiUrl + '/games/',
+    url: config.apiUrl + '/games',
     data: {},
     headers: {
       Authorization: 'Bearer ' + store.user.token
       }
   })
 }
+
+
 
 
 module.exports = {
@@ -88,5 +90,5 @@ module.exports = {
   signOut,
   newGame,
   playerMove,
-  gamesPlayed
+  gamesPlayed,
 }
