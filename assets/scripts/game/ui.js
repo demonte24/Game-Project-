@@ -1,13 +1,13 @@
 
 const store = require('./../store')
+const events = require('./events')
+const api = require('./api')
 
 const switchPlayer = function () {
-
   if(store.currentPlayer === 'X') {
     store.currentPlayer = 'O'
   } else {
     store.currentPlayer = 'X'
-
   }
 }
 
@@ -118,19 +118,24 @@ const updateGameFailure = function (response) {
   $('message').text('Your game did not update try again!')
   }
 
+  const onNewGame = function (event) {
+    api.newGame()
+      .then(newGameSuccess())
+      .catch(newGameFailure())
+  }
+
   const winnerCheck = function () {
-  store.over = true
-  store.game.over = true
-  store.game.cells = store.cells
-  console.log(store.game.cells)
-  console.log(store.game)
+    // debugger
+  // store.over = true
+  // store.game.over = true
   $('#message').html('Player ' + store.startPlayer + ' has won!')
-  // $('.container').css('pointer-events', 'none')
+  onNewGame()
 }
 const tieCheck = function () {
+  // store.games.cells = response.game
   store.game.over = true
   $('#message').text('Looks like a tie game!  Click new game to reset.')
-  // $('.container').css('pointer-events', 'none')
+
 }
 
 module.exports = {
