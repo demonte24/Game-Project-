@@ -21,4 +21,5 @@ $(() => {
   $('#new-game').on('click', gameEvents.onNewGame)
   $('.box').on('click', gameEvents.onGameBoardClick)
   $('#games-played').on('click', gameEvents.onGamesPlayed)
+  $('#game-board-section').on('click', gameEvents.onWinnerCheck)
 })

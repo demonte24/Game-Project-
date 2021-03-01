@@ -93,7 +93,7 @@ const playerMoveFailure = function () {
 
 
   const gamesPlayedSuccess = function (responseData) {
-    $('#games-played').trigger('reset')
+
     const games = responseData.games
     let gamesHtml = ''
     games.forEach(game => {
@@ -105,6 +105,7 @@ const playerMoveFailure = function () {
       `
     })
     $('.gamesPlayed').html(gamesHtml)
+      $('#games-played').trigger('reset')
   }
 
 const updateGameSuccess = function (response) {
