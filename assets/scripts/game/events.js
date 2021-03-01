@@ -135,7 +135,7 @@ const onGameBoardClick = function (event) {
 }
 
 
-
+newgamefunction
 
 
 
